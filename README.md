@@ -40,6 +40,7 @@ This example shows following animation.
 In the DataTrigger sample, we assume that BindingContext is  already set, and that ViewModel contains `bool` type property named `IsAnimationWorking`.
 
 ```XAML
+<Button Command="{Binding RunAnimation}" Text="RunAnimation"/>
 <Entry Text="Welcome to Xamarin.Forms!" TextColor="Black" FontSize="20" BackgroundColor="Gray" VerticalOptions="FillAndExpand">
 	<Entry.Triggers>
 		<DataTrigger TargetType="Entry" Binding="{Binding Path=IsAnimationWorking,Mode=OneWay,UpdateSourceEventName=PropertyChanged}" Value="true">
@@ -57,6 +58,16 @@ In the DataTrigger sample, we assume that BindingContext is  already set, and th
 	</Entry.Triggers>
 </Entry>
 ```
+
+This example shows following animation.
+- Animation starts when Button is clicked (`IsAnimationWorking` is set to `true` when Button is clicked).
+  - `TextColor` property : Black -> Yellow
+  - `FontSize` property : 20 -> 50
+  - `BackgroundColor` property : Gray -> Red
+- After 2 seconds, another animation starts (`IsAnimationWorking` is force change to `false` after 2 seconds).
+  - `TextColor` property : Yellow -> Black
+  - `FontSize` property : 50 -> 20
+  - `BackgroundColor` property : Red -> Gray
 
 # Dependencies
 Xamarin.Forms : 3.2.0.871581
