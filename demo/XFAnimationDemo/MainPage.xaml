@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:animationsPack="clr-namespace:Xamarin.Forms.AnimationsPack;assembly=Xamarin.Forms.AnimationsPack"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:XFAnimationDemo" x:Class="XFAnimationDemo.MainPage"
+			 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true">
+	<ContentPage.BindingContext>
+		<local:MainPageViewModel/>
+	</ContentPage.BindingContext>
+	<StackLayout>
+		<Button Command="{Binding RunAnimation}" Text="RunAnimation"/>
+		<Entry Text="Welcome to Xamarin.Forms!" TextColor="Black" FontSize="20" BackgroundColor="Gray" VerticalOptions="FillAndExpand">
+			<Entry.Triggers>
+				<EventTrigger Event="Focused">
+					<animationsPack:EntryTextColorAnimation To="Lime"/>
+					<animationsPack:EntryFontSizeDoubleAnimation To="30"/>
+					<animationsPack:BackgroundColorAnimation To="Teal"/>
+				</EventTrigger>
+				<DataTrigger TargetType="Entry" Binding="{Binding Path=IsAnimationWorking,Mode=OneWay,UpdateSourceEventName=PropertyChanged}" Value="true">
+					<DataTrigger.EnterActions>
+						<animationsPack:EntryTextColorAnimation To="Yellow"/>
+						<animationsPack:EntryFontSizeDoubleAnimation To="50"/>
+						<animationsPack:BackgroundColorAnimation To="Red"/>
+					</DataTrigger.EnterActions>
+					<DataTrigger.ExitActions>
+						<animationsPack:EntryTextColorAnimation To="Black"/>
+						<animationsPack:EntryFontSizeDoubleAnimation To="20"/>
+						<animationsPack:BackgroundColorAnimation To="Gray"/>
+					</DataTrigger.ExitActions>
+				</DataTrigger>
+			</Entry.Triggers>
+		</Entry>
+	</StackLayout>
+</ContentPage>
