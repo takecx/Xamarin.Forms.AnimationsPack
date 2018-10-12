@@ -3,16 +3,17 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Xamarin.Forms.AnimationsPack</PackageId>
-    <Version>0.1.0</Version>
+    <Version>1.0.0</Version>
     <Authors>Takeshi Noguchi</Authors>
     <Company>Takeshi Noguchi</Company>
+    <PackageLicenseUrl>https://github.com/takecx/Xamarin.Forms.AnimationsPack/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/takecx/Xamarin.Forms.AnimationsPack</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/takecx/Xamarin.Forms.AnimationsPack</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
     <PackageTags>xamarin;forms;animation;xamarinforms</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Class1.cs" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.2.0.871581" />
   </ItemGroup>
