@@ -22,9 +22,9 @@ Simple code sample for Xamrin.Forms.Entry control.
 <Entry Text="Welcome to Xamarin.Forms!" TextColor="Black" FontSize="20" BackgroundColor="Gray">
 	<Entry.Triggers>
 		<EventTrigger Event="Focused">
-			<animationsPack:EntryTextColorAnimation To="Lime"/>
-			<animationsPack:EntryFontSizeDoubleAnimation To="30"/>
-			<animationsPack:BackgroundColorAnimation To="Teal"/>
+			<animationsPack:EntryTextColorAnimation From="Black" To="Lime" Length="1000" Easing="Linear"/>
+			<animationsPack:EntryFontSizeDoubleAnimation To="30" Length="3000"/>
+			<animationsPack:BackgroundColorAnimation To="Teal" Easing="CubicInOut"/>
 		</EventTrigger>
 	</Entry.Triggers>
 </Entry>
@@ -32,9 +32,9 @@ Simple code sample for Xamrin.Forms.Entry control.
 
 This example shows following animation.
 - Animation starts when Entry is focused.
-  - `TextColor` property : Black -> Lime
-  - `FontSize` property : 20 -> 30
-  - `BackgroundColor` property : Gray -> Teal
+  - `TextColor` property : **Black** > **Lime**, **1000** millisecond, **Linear** easing-function
+  - `FontSize` property : *20* > **30**, **3000** millisecond, *Linear* easing-function
+  - `BackgroundColor` property : *Gray* -> **Teal**, *1000* millisecond, **CubicInOut** easing-function
 
 ### DataTrigger
 In the DataTrigger sample, we assume that BindingContext is  already set, and that ViewModel contains `bool` type property named `IsAnimationWorking`.
@@ -45,9 +45,9 @@ In the DataTrigger sample, we assume that BindingContext is  already set, and th
 	<Entry.Triggers>
 		<DataTrigger TargetType="Entry" Binding="{Binding Path=IsAnimationWorking,Mode=OneWay,UpdateSourceEventName=PropertyChanged}" Value="true">
 			<DataTrigger.EnterActions>
-				<animationsPack:EntryTextColorAnimation To="Yellow"/>
-				<animationsPack:EntryFontSizeDoubleAnimation To="50"/>
-				<animationsPack:BackgroundColorAnimation To="Red"/>
+				<animationsPack:EntryTextColorAnimation From="Black" To="Yellow" Length="1000" Easing="BounceIn"/>
+				<animationsPack:EntryFontSizeDoubleAnimation To="50" Length="2000"/>
+				<animationsPack:BackgroundColorAnimation To="Red" Easing="SinIn"/>
 			</DataTrigger.EnterActions>
 			<DataTrigger.ExitActions>
 				<animationsPack:EntryTextColorAnimation To="Black"/>
@@ -61,13 +61,15 @@ In the DataTrigger sample, we assume that BindingContext is  already set, and th
 
 This example shows following animation.
 - Animation starts when Button is clicked (`IsAnimationWorking` is set to `true` when Button is clicked).
-  - `TextColor` property : Black -> Yellow
-  - `FontSize` property : 20 -> 50
-  - `BackgroundColor` property : Gray -> Red
+  - `TextColor` property : **Black** -> **Yellow**, **1000** millisecond, **BounceIn** easing-function
+  - `FontSize` property : *20* -> **50**, **2000** millisecond, *Linear* easing-function
+  - `BackgroundColor` property : *Gray* -> **Red**, *1000* millisecond, **SinIn** easing-function
 - After 2 seconds, another animation starts (`IsAnimationWorking` is force change to `false` after 2 seconds).
-  - `TextColor` property : Yellow -> Black
-  - `FontSize` property : 50 -> 20
-  - `BackgroundColor` property : Red -> Gray
+  - `TextColor` property : *Yellow* -> **Black**, *1000* milliseconds, *Linear* easing-function
+  - `FontSize` property : *50* -> **20**, *1000* milliseconds, *Linear* easing-function
+  - `BackgroundColor` property : *Red* -> **Gray**, *1000* milliseconds, *Linear* easing-function
+
+Note : **(Bold Property)** is explicitly specified property. *(Italic property)* is unspecified and apply to [default-value](#common-property) property
 
 # Dependencies
 Xamarin.Forms : 3.2.0.871581
