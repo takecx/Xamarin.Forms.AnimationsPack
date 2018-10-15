@@ -5,11 +5,11 @@ using System.Windows.Input;
 
 namespace XFAnimationDemo
 {
-	internal class RunAnimationCommand : ICommand
+	internal class RunAnimationCommanda : ICommand
 	{
 		private MainPageViewModel mainPageViewModel;
 
-		public RunAnimationCommand(MainPageViewModel mainPageViewModel)
+		public RunAnimationCommanda(MainPageViewModel mainPageViewModel)
 		{
 			this.mainPageViewModel = mainPageViewModel;
 		}

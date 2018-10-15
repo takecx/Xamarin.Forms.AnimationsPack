@@ -140,6 +140,9 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Star.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Star.imageset\star%402x.png" />
+    <ImageAsset Include="Assets.xcassets\Star.imageset\star%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -156,5 +159,8 @@
       <Project>{BD32CABD-5EC6-4D10-9CA1-0B3BDD8333E9}</Project>
       <Name>XFAnimationDemo</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\Star.imageset\" />
   </ItemGroup>
 </Project>

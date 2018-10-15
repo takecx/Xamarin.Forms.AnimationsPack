@@ -1,46 +1,57 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using Prism.Commands;
+using Prism.Mvvm;
 using Xamarin.Forms;
 
 namespace XFAnimationDemo
 {
-	public class MainPageViewModel : INotifyPropertyChanged
+	public class MainPageViewModel : BindableBase
 	{
 		#region Property
-		protected bool _isAnimationWorking;
+		private bool _IsAnimationWorking;
 		public bool IsAnimationWorking
 		{
-			get { return _isAnimationWorking; }
-			set
-			{
-				_isAnimationWorking = value;
-				OnPropertyChanged(nameof(IsAnimationWorking));
-			}
+			get { return _IsAnimationWorking; }
+			set { this.SetProperty(ref this._IsAnimationWorking, value); }
 		}
+		private ObservableCollection<string> _Properties;
+		public ObservableCollection<string> Properties
+		{
+			get { return _Properties; }
+			set { this.SetProperty(ref this._Properties, value); }
+		}
+
 		#endregion
 
 		#region Commands
-		public ICommand RunAnimation { get; private set; }
+		public DelegateCommand RunAnimation { get; private set; }
 		#endregion
 
 		public MainPageViewModel()
 		{
 			// Create commands
-			RunAnimation = new RunAnimationCommand(this);
+			RunAnimation = new DelegateCommand(RunAnimationCommand);
 
 			// Initialize
 			IsAnimationWorking = false;
+			_Properties = new ObservableCollection<string> { "" };
 		}
 
-		public event PropertyChangedEventHandler PropertyChanged;
-
-		protected virtual void OnPropertyChanged(string propertyName)
+		private void RunAnimationCommand()
 		{
-			if (PropertyChanged != null)
+			Task.Run(() =>
 			{
-				PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
+				IsAnimationWorking = true;
+				Thread.Sleep(2000);
+			}).ContinueWith((r) =>
+			{
+				IsAnimationWorking = false;
+			});
 		}
 	}
 }
