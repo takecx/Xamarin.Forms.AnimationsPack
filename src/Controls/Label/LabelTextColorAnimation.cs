@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Xamarin.Forms;
+using Xamarin.Forms.AnimationsPack.Base;
 using Xamarin.Forms.AnimationsPack.Utils;
 
 namespace Xamarin.Forms.AnimationsPack

@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace Xamarin.Forms.AnimationsPack
+namespace Xamarin.Forms.AnimationsPack.Base
 {
 	public class AnimationBase<T> : TriggerAction<VisualElement>
 	{

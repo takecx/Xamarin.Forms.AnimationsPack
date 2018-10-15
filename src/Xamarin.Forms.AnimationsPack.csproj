@@ -10,6 +10,8 @@
     <PackageProjectUrl>https://github.com/takecx/Xamarin.Forms.AnimationsPack</PackageProjectUrl>
     <RepositoryUrl>https://github.com/takecx/Xamarin.Forms.AnimationsPack</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
+    <Description>Visual Element Animation library for Xamarin.Forms. BackgroundColor,Opacity,Margin,FontSize,CornerRadius and so on.</Description>
+    <Copyright>Copyright (C) 2018</Copyright>
     <PackageTags>xamarin;forms;animation;xamarinforms</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
