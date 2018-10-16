@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Xamarin.Forms.AnimationsPack</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>Takeshi Noguchi</Authors>
     <Company>Takeshi Noguchi</Company>
     <PackageLicenseUrl>https://github.com/takecx/Xamarin.Forms.AnimationsPack/blob/master/LICENSE</PackageLicenseUrl>
