@@ -9,6 +9,15 @@ Install from NuGet.
 ```
 [https://www.nuget.org/packages/Xamarin.Forms.AnimationsPack](https://www.nuget.org/packages/Xamarin.Forms.AnimationsPack)
 
+# Demo Project
+Demo project applying this library is located to the following path of this repository.
+
+```
+demo/XFAnimationDemo.sln
+```
+
+Let's build and run demo application!
+
 # How to Use
 ## Namespace Declaration
 ~~~XAML
