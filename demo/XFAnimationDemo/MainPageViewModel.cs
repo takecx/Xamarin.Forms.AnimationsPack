@@ -19,13 +19,12 @@ namespace XFAnimationDemo
 			get { return _IsAnimationWorking; }
 			set { this.SetProperty(ref this._IsAnimationWorking, value); }
 		}
-		private ObservableCollection<string> _Properties;
-		public ObservableCollection<string> Properties
+		private ObservableCollection<string> _PickerItems = new ObservableCollection<string>();
+		public ObservableCollection<string> m_PickerItems
 		{
-			get { return _Properties; }
-			set { this.SetProperty(ref this._Properties, value); }
+			get { return _PickerItems; }
+			set { this.SetProperty(ref this._PickerItems, value); }
 		}
-
 		#endregion
 
 		#region Commands
@@ -39,7 +38,7 @@ namespace XFAnimationDemo
 
 			// Initialize
 			IsAnimationWorking = false;
-			_Properties = new ObservableCollection<string> { "" };
+			m_PickerItems = new ObservableCollection<string> { "Picker", "VisualElement", "View", "Label", "Entry" };
 		}
 
 		private void RunAnimationCommand()

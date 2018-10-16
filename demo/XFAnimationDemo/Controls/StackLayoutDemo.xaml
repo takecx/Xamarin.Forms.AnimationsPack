@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:animationsPack="clr-namespace:Xamarin.Forms.AnimationsPack;assembly=Xamarin.Forms.AnimationsPack" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XFAnimationDemo.StackLayoutDemo">
+	<ContentPage.Content>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="55*" />
+				<RowDefinition Height="40*" />
+				<RowDefinition Height="5*" />
+			</Grid.RowDefinitions>
+			<StackLayout Grid.Row="0" Spacing="0">
+				<StackLayout.Triggers>
+					<DataTrigger TargetType="StackLayout" Binding="{Binding Path=IsAnimationWorking,Mode=OneWay,UpdateSourceEventName=PropertyChanged}" Value="true">
+						<DataTrigger.EnterActions>
+							<animationsPack:StackLayoutSpacingDoubleAnimation To="10" />
+						</DataTrigger.EnterActions>
+						<DataTrigger.ExitActions>
+							<animationsPack:StackLayoutSpacingDoubleAnimation To="0" />
+						</DataTrigger.ExitActions>
+					</DataTrigger>
+				</StackLayout.Triggers>
+				<BoxView Color="Gray"/>
+				<BoxView Color="Olive"/>
+				<BoxView Color="Teal"/>
+			</StackLayout>
+			<TableView Grid.Row="1" BackgroundColor="{StaticResource PropertyBackgroundColor}">
+				<TableView.Root>
+					<TableSection Title="Property">
+						<TextCell Text="Spacing" Detail="0 &gt; 10 &gt; 0" />
+					</TableSection>
+				</TableView.Root>
+			</TableView>
+			<Button Grid.Row="2" Command="{Binding RunAnimation}" Text="RunAnimation" BackgroundColor="{StaticResource ButtonBackgroundColor}" CornerRadius="7" Margin="30,0" />
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:animationsPack="clr-namespace:Xamarin.Forms.AnimationsPack;assembly=Xamarin.Forms.AnimationsPack" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XFAnimationDemo.SliderDemo">
+	<ContentPage.Content>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="55*" />
+				<RowDefinition Height="40*" />
+				<RowDefinition Height="5*" />
+			</Grid.RowDefinitions>
+			<Slider MaximumTrackColor="Green" MinimumTrackColor="Navy" ThumbColor="Red" Value="0.3" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" WidthRequest="400">
+				<Slider.Triggers>
+					<DataTrigger TargetType="Slider" Binding="{Binding Path=IsAnimationWorking,Mode=OneWay,UpdateSourceEventName=PropertyChanged}" Value="true">
+						<DataTrigger.EnterActions>
+							<animationsPack:SliderMaximumTrackColorAnimation To="Navy" />
+							<animationsPack:SliderMinimumTrackColorAnimation To="Green" />
+							<animationsPack:SliderThumbColorAnimation To="Yellow" />
+						</DataTrigger.EnterActions>
+						<DataTrigger.ExitActions>
+							<animationsPack:SliderMaximumTrackColorAnimation To="Green" />
+							<animationsPack:SliderMinimumTrackColorAnimation To="Navy" />
+							<animationsPack:SliderThumbColorAnimation To="Red" />
+						</DataTrigger.ExitActions>
+					</DataTrigger>
+				</Slider.Triggers>
+			</Slider>
+			<TableView Grid.Row="1" BackgroundColor="{StaticResource PropertyBackgroundColor}">
+				<TableView.Root>
+					<TableSection Title="Property">
+						<TextCell Text="MaximumTrackColor" Detail="Green &gt; Navy &gt; Green" />
+						<TextCell Text="MinimumTrackColor" Detail="Navy &gt; Green &gt; Navy" />
+						<TextCell Text="ThumbColor" Detail="Red &gt; Yellow &gt; Red" />
+					</TableSection>
+				</TableView.Root>
+			</TableView>
+			<Button Grid.Row="2" Command="{Binding RunAnimation}" Text="RunAnimation" BackgroundColor="{StaticResource ButtonBackgroundColor}" CornerRadius="7" Margin="30,0" />
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

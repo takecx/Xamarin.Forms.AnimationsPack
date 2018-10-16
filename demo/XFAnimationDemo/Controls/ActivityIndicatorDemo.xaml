@@ -7,7 +7,7 @@
 				<RowDefinition Height="40*" />
 				<RowDefinition Height="5*" />
 			</Grid.RowDefinitions>
-			<ActivityIndicator Grid.Row="0" Color="Gray" IsRunning="{Binding IsAnimationWorking,Mode=OneWay,UpdateSourceEventName=PropertyChanged}">
+			<ActivityIndicator Grid.Row="0" Color="Gray" IsRunning="{Binding IsAnimationWorking,Mode=OneWay,UpdateSourceEventName=PropertyChanged}" HorizontalOptions="Center" VerticalOptions="Center">
 				<ActivityIndicator.Triggers>
 					<DataTrigger TargetType="ActivityIndicator" Binding="{Binding Path=IsAnimationWorking,Mode=OneWay,UpdateSourceEventName=PropertyChanged}" Value="true">
 						<DataTrigger.EnterActions>

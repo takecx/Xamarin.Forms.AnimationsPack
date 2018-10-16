@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:animationsPack="clr-namespace:Xamarin.Forms.AnimationsPack;assembly=Xamarin.Forms.AnimationsPack" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XFAnimationDemo.ListViewDemo">
+	<ContentPage.Content>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="55*" />
+				<RowDefinition Height="40*" />
+				<RowDefinition Height="5*" />
+			</Grid.RowDefinitions>
+			<ListView Grid.Row="0" RowHeight="30" SeparatorColor="Gray" ItemsSource="{Binding m_PickerItems}">
+				<ListView.Triggers>
+					<DataTrigger TargetType="ListView" Binding="{Binding Path=IsAnimationWorking,Mode=OneWay,UpdateSourceEventName=PropertyChanged}" Value="true">
+						<DataTrigger.EnterActions>
+							<animationsPack:ListViewRowHeightDoubleAnimation To="60" />
+							<animationsPack:ListViewSeparatorColorAnimation To="Lime" />
+						</DataTrigger.EnterActions>
+						<DataTrigger.ExitActions>
+							<animationsPack:ListViewRowHeightDoubleAnimation To="30" />
+							<animationsPack:ListViewSeparatorColorAnimation To="Gray" />
+						</DataTrigger.ExitActions>
+					</DataTrigger>
+				</ListView.Triggers>
+			</ListView>
+			<TableView Grid.Row="1" BackgroundColor="{StaticResource PropertyBackgroundColor}">
+				<TableView.Root>
+					<TableSection Title="Property">
+						<TextCell Text="(X)RowHeight" Detail="30 &gt; 60 &gt; 30" />
+						<TextCell Text="SeparatorColor" Detail="Gray &gt; Lime &gt; Gray" />
+					</TableSection>
+				</TableView.Root>
+			</TableView>
+			<Button Grid.Row="2" Command="{Binding RunAnimation}" Text="RunAnimation" BackgroundColor="{StaticResource ButtonBackgroundColor}" CornerRadius="7" Margin="30,0" />
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

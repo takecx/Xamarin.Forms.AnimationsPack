@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:animationsPack="clr-namespace:Xamarin.Forms.AnimationsPack;assembly=Xamarin.Forms.AnimationsPack" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XFAnimationDemo.PickerDemo">
+	<ContentPage.Content>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="55*" />
+				<RowDefinition Height="40*" />
+				<RowDefinition Height="5*" />
+			</Grid.RowDefinitions>
+			<Picker TextColor="Black" FontSize="20" Title="Picker" ItemsSource="{Binding m_PickerItems,Mode=OneWay,UpdateSourceEventName=PropertyChanged}" HorizontalOptions="Center" VerticalOptions="Center">
+				<Picker.Triggers>
+					<DataTrigger TargetType="Picker" Binding="{Binding Path=IsAnimationWorking,Mode=OneWay,UpdateSourceEventName=PropertyChanged}" Value="true">
+						<DataTrigger.EnterActions>
+							<animationsPack:PickerTextColorAnimation To="Blue" />
+							<animationsPack:PickerFontSizeDoubleAnimation To="40" />
+						</DataTrigger.EnterActions>
+						<DataTrigger.ExitActions>
+							<animationsPack:PickerTextColorAnimation To="Black" />
+							<animationsPack:PickerFontSizeDoubleAnimation To="20" />
+						</DataTrigger.ExitActions>
+					</DataTrigger>
+				</Picker.Triggers>
+			</Picker>
+			<TableView Grid.Row="1" BackgroundColor="{StaticResource PropertyBackgroundColor}">
+				<TableView.Root>
+					<TableSection Title="Property">
+						<TextCell Text="TextColor" Detail="Black &gt; Blue &gt; Black" />
+						<TextCell Text="FontSize" Detail="20 &gt; 40 &gt; 20" />
+					</TableSection>
+				</TableView.Root>
+			</TableView>
+			<Button Grid.Row="2" Command="{Binding RunAnimation}" Text="RunAnimation" BackgroundColor="{StaticResource ButtonBackgroundColor}" CornerRadius="7" Margin="30,0" />
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

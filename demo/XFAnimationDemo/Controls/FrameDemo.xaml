@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:animationsPack="clr-namespace:Xamarin.Forms.AnimationsPack;assembly=Xamarin.Forms.AnimationsPack" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XFAnimationDemo.FrameDemo">
+	<ContentPage.Content>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="55*" />
+				<RowDefinition Height="40*" />
+				<RowDefinition Height="5*" />
+			</Grid.RowDefinitions>
+			<Frame BorderColor="Gray" CornerRadius="0" HorizontalOptions="Center" VerticalOptions="Center">
+				<Frame.Triggers>
+					<DataTrigger TargetType="Frame" Binding="{Binding Path=IsAnimationWorking,Mode=OneWay,UpdateSourceEventName=PropertyChanged}" Value="true">
+						<DataTrigger.EnterActions>
+							<animationsPack:FrameBorderColorAnimation To="Lime" />
+							<animationsPack:FrameCornerRadiusAnimation To="40" />
+<!--							<animationsPack:FrameOutlineColorAnimation To="Maroon" />-->
+						</DataTrigger.EnterActions>
+						<DataTrigger.ExitActions>
+							<animationsPack:FrameBorderColorAnimation To="Gray" />
+							<animationsPack:FrameCornerRadiusAnimation To="0" />
+<!--							<animationsPack:FrameOutlineColorAnimation To="Green" />-->
+						</DataTrigger.ExitActions>
+					</DataTrigger>
+				</Frame.Triggers>
+			</Frame>
+			<TableView Grid.Row="1" BackgroundColor="{StaticResource PropertyBackgroundColor}">
+				<TableView.Root>
+					<TableSection Title="Property">
+						<TextCell Text="BorderColor" Detail="Gray &gt; Lime &gt; Gray" />
+						<TextCell Text="CornerRadius" Detail="0 &gt; 40 &gt; 0" />
+						<TextCell Text="OutlineColor(Obsolete)" Detail="Green &gt; Maroon &gt; Green" />
+					</TableSection>
+				</TableView.Root>
+			</TableView>
+			<Button Grid.Row="2" Command="{Binding RunAnimation}" Text="RunAnimation" BackgroundColor="{StaticResource ButtonBackgroundColor}" CornerRadius="7" Margin="30,0" />
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

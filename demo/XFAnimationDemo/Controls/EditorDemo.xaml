@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:animationsPack="clr-namespace:Xamarin.Forms.AnimationsPack;assembly=Xamarin.Forms.AnimationsPack" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XFAnimationDemo.EditorDemo">
+	<ContentPage.Content>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="55*" />
+				<RowDefinition Height="40*" />
+				<RowDefinition Height="5*" />
+			</Grid.RowDefinitions>
+			<Editor FontSize="20" TextColor="Black" PlaceholderColor="Gray" Placeholder="Editor placeholder" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" WidthRequest="200">
+				<Editor.Triggers>
+					<DataTrigger TargetType="Editor" Binding="{Binding Path=IsAnimationWorking,Mode=OneWay,UpdateSourceEventName=PropertyChanged}" Value="true">
+						<DataTrigger.EnterActions>
+							<animationsPack:EditorFontSizeDoubleAnimation To="40" />
+							<animationsPack:EditorTextColorAnimation To="Red" />
+							<animationsPack:EditorPlaceholderColorAnimation To="Lime" />
+						</DataTrigger.EnterActions>
+						<DataTrigger.ExitActions>
+							<animationsPack:EditorFontSizeDoubleAnimation To="20" />
+							<animationsPack:EditorTextColorAnimation To="Black" />
+							<animationsPack:EditorPlaceholderColorAnimation To="Gray" />
+						</DataTrigger.ExitActions>
+					</DataTrigger>
+				</Editor.Triggers>
+			</Editor>
+			<TableView Grid.Row="1" BackgroundColor="{StaticResource PropertyBackgroundColor}">
+				<TableView.Root>
+					<TableSection Title="Property">
+						<TextCell Text="FontSize" Detail="20 &gt; 40 &gt; 20" />
+						<TextCell Text="TextColor" Detail="Black &gt; Red &gt; Black" />
+						<TextCell Text="PlaceholderColor" Detail="Gray &gt; Lime &gt; Gray" />
+					</TableSection>
+				</TableView.Root>
+			</TableView>
+			<Button Grid.Row="2" Command="{Binding RunAnimation}" Text="RunAnimation" BackgroundColor="{StaticResource ButtonBackgroundColor}" CornerRadius="7" Margin="30,0" />
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

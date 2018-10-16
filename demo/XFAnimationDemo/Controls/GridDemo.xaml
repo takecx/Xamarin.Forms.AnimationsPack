@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:animationsPack="clr-namespace:Xamarin.Forms.AnimationsPack;assembly=Xamarin.Forms.AnimationsPack" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XFAnimationDemo.GridDemo">
+	<ContentPage.Content>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="55*" />
+				<RowDefinition Height="40*" />
+				<RowDefinition Height="5*" />
+			</Grid.RowDefinitions>
+			<Grid Grid.Row="0" ColumnSpacing="5" RowSpacing="5" Padding="0">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="1*"/>
+					<ColumnDefinition Width="1*"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="1*"/>
+					<RowDefinition Height="1*"/>
+					<RowDefinition Height="1*"/>
+				</Grid.RowDefinitions>
+				<Grid.Triggers>
+					<DataTrigger TargetType="Grid" Binding="{Binding Path=IsAnimationWorking,Mode=OneWay,UpdateSourceEventName=PropertyChanged}" Value="true">
+						<DataTrigger.EnterActions>
+							<animationsPack:GridColumnSpacingDoubleAnimation To="50" />
+							<animationsPack:GridRowSpacingDoubleAnimation To="50" />
+						</DataTrigger.EnterActions>
+						<DataTrigger.ExitActions>
+							<animationsPack:GridColumnSpacingDoubleAnimation To="5" />
+							<animationsPack:GridRowSpacingDoubleAnimation To="5" />
+						</DataTrigger.ExitActions>
+					</DataTrigger>
+				</Grid.Triggers>
+				<BoxView Grid.Column="0" Grid.Row="0" Color="Gray"/>
+				<BoxView Grid.Column="0" Grid.Row="1" Color="Gray"/>
+				<BoxView Grid.Column="0" Grid.Row="2" Color="Gray"/>
+				<BoxView Grid.Column="1" Grid.Row="0" Color="Gray"/>
+				<BoxView Grid.Column="1" Grid.Row="1" Color="Gray"/>
+				<BoxView Grid.Column="1" Grid.Row="2" Color="Gray"/>
+			</Grid>
+			<TableView Grid.Row="1" BackgroundColor="{StaticResource PropertyBackgroundColor}">
+				<TableView.Root>
+					<TableSection Title="Property">
+						<TextCell Text="ColumnSpacing" Detail="5 &gt; 50 &gt; 5" />
+						<TextCell Text="RowSpacing" Detail="5 &gt; 50 &gt; 5" />
+					</TableSection>
+				</TableView.Root>
+			</TableView>
+			<Button Grid.Row="2" Command="{Binding RunAnimation}" Text="RunAnimation" BackgroundColor="{StaticResource ButtonBackgroundColor}" CornerRadius="7" Margin="30,0" />
+		</Grid>	
+	</ContentPage.Content>
+</ContentPage>
