@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:animationsPack="clr-namespace:Xamarin.Forms.AnimationsPack;assembly=Xamarin.Forms.AnimationsPack" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XFAnimationDemo.LabelDemo">
+	<ContentPage.Content>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="55*" />
+				<RowDefinition Height="40*" />
+				<RowDefinition Height="5*" />
+			</Grid.RowDefinitions>
+			<Label Grid.Row="0" Text="Label" FontSize="30" TextColor="Black" LineHeight="1.0" Margin="30" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+				<BoxView.Triggers>
+					<DataTrigger TargetType="Label" Binding="{Binding Path=IsAnimationWorking,Mode=OneWay,UpdateSourceEventName=PropertyChanged}" Value="true">
+						<DataTrigger.EnterActions>
+							<animationsPack:LabelFontSizeDoubleAnimation To="60" />
+							<animationsPack:LabelTextColorAnimation To="Blue" />
+							<animationsPack:LabelLineHeightDoubleAnimation To="2.5" />
+						</DataTrigger.EnterActions>
+						<DataTrigger.ExitActions>
+							<animationsPack:LabelFontSizeDoubleAnimation To="30" />
+							<animationsPack:LabelTextColorAnimation To="Black" />
+							<animationsPack:LabelLineHeightDoubleAnimation To="1.0" />
+						</DataTrigger.ExitActions>
+					</DataTrigger>
+				</BoxView.Triggers>
+			</Label>
+			<TableView Grid.Row="1" BackgroundColor="{StaticResource PropertyBackgroundColor}">
+				<TableView.Root>
+					<TableSection Title="Property">
+						<TextCell Text="FontSize" Detail="30 &gt; 60 &gt; 30" />
+						<TextCell Text="TextColor" Detail="Black &gt; Blue &gt; Black" />
+						<TextCell Text="LineHeight" Detail=" 1.0 &gt; 2.5 &gt; 1.0" />
+					</TableSection>
+				</TableView.Root>
+			</TableView>
+			<Button Grid.Row="2" Command="{Binding RunAnimation}" Text="RunAnimation" BackgroundColor="{StaticResource ButtonBackgroundColor}" CornerRadius="7" Margin="30,0" />
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

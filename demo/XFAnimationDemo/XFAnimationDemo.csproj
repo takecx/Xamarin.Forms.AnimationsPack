@@ -14,4 +14,7 @@
     <PackageReference Include="Xamarin.Forms.AnimationsPack" Version="1.0.0" />
     <PackageReference Include="Prism.Forms" Version="7.0.0.396" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
+  </ItemGroup>
 </Project>

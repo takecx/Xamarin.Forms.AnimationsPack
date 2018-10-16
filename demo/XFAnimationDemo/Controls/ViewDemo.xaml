@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:animationsPack="clr-namespace:Xamarin.Forms.AnimationsPack;assembly=Xamarin.Forms.AnimationsPack" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XFAnimationDemo.ViewDemo">
+	<ContentPage.Content>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="55*"/>
+				<RowDefinition Height="40*"/>
+				<RowDefinition Height="5*"/>
+			</Grid.RowDefinitions>
+			<Label Grid.Row="0" Text="View" Margin="30" BackgroundColor="Gray" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+				<Label.Triggers>
+					<DataTrigger TargetType="View" Binding="{Binding Path=IsAnimationWorking,Mode=OneWay,UpdateSourceEventName=PropertyChanged}" Value="true">
+						<DataTrigger.EnterActions>
+							<animationsPack:MarginThicknessAnimation To="100"/>
+						</DataTrigger.EnterActions>
+						<DataTrigger.ExitActions>
+							<animationsPack:MarginThicknessAnimation To="30"/>
+						</DataTrigger.ExitActions>
+					</DataTrigger>
+				</Label.Triggers>					
+			</Label>
+			<TableView Grid.Row="1" BackgroundColor="{StaticResource PropertyBackgroundColor}">
+				<TableView.Root>
+					<TableSection Title="Property">
+						<TextCell Text="Margin" Detail="30 > 100 > 30"/>
+					</TableSection>
+				</TableView.Root>
+			</TableView>
+			<Button Grid.Row="2" Command="{Binding RunAnimation}" Text="RunAnimation" BackgroundColor="{StaticResource ButtonBackgroundColor}" CornerRadius="7" Margin="30,0"/>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

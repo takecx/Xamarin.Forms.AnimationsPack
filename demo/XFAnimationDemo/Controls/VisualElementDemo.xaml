@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:animationsPack="clr-namespace:Xamarin.Forms.AnimationsPack;assembly=Xamarin.Forms.AnimationsPack" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XFAnimationDemo.VisualElementDemo">
+	<ContentPage.Content>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="55*"/>
+				<RowDefinition Height="40*"/>
+				<RowDefinition Height="5*"/>
+			</Grid.RowDefinitions>
+			<Label Grid.Row="0" Text="VisualElement" BackgroundColor="Gray" Opacity="1" HeightRequest="100" WidthRequest="150" Margin="30" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+				<BoxView.Triggers>
+					<DataTrigger TargetType="VisualElement" Binding="{Binding Path=IsAnimationWorking,Mode=OneWay,UpdateSourceEventName=PropertyChanged}" Value="true">
+						<DataTrigger.EnterActions>
+							<animationsPack:BackgroundColorAnimation To="Olive"/>
+							<animationsPack:OpacityDoubleAnimation To="0"/>
+							<animationsPack:HeightRequestDoubleAnimation To="150"/>
+							<animationsPack:WidthRequestDoubleAnimation To="250"/>
+						</DataTrigger.EnterActions>
+						<DataTrigger.ExitActions>
+							<animationsPack:BackgroundColorAnimation To="Gray"/>
+							<animationsPack:OpacityDoubleAnimation To="1"/>
+							<animationsPack:HeightRequestDoubleAnimation To="100"/>
+							<animationsPack:WidthRequestDoubleAnimation To="150"/>
+						</DataTrigger.ExitActions>
+					</DataTrigger>
+				</BoxView.Triggers>					
+			</Label>
+			<TableView Grid.Row="1" BackgroundColor="{StaticResource PropertyBackgroundColor}">
+				<TableView.Root>
+					<TableSection Title="Property">
+						<TextCell Text="BackgroundColor" Detail="Gray > Olive > Gray"/>
+						<TextCell Text="Opacity" Detail="1.0 > 0.0 > 1.0"/>
+						<TextCell Text="HeightRequest" Detail="100 > 150 > 100"/>
+						<TextCell Text="WidthRequest" Detail="150 > 250 > 150"/>
+					</TableSection>
+				</TableView.Root>
+			</TableView>
+			<Button Grid.Row="2" Command="{Binding RunAnimation}" Text="RunAnimation" BackgroundColor="{StaticResource ButtonBackgroundColor}" CornerRadius="7" Margin="30,0"/>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:animationsPack="clr-namespace:Xamarin.Forms.AnimationsPack;assembly=Xamarin.Forms.AnimationsPack" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XFAnimationDemo.BoxViewDemo">
+	<ContentPage.Content>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="55*" />
+				<RowDefinition Height="40*" />
+				<RowDefinition Height="5*" />
+			</Grid.RowDefinitions>
+			<BoxView Grid.Row="0" Color="Black" CornerRadius="0" Margin="30">
+				<BoxView.Triggers>
+					<DataTrigger TargetType="BoxView" Binding="{Binding Path=IsAnimationWorking,Mode=OneWay,UpdateSourceEventName=PropertyChanged}" Value="true">
+						<DataTrigger.EnterActions>
+							<animationsPack:BoxViewColorAnimation To="Teal" />
+							<animationsPack:BoxViewCornerRadiusAnimation To="40" />
+						</DataTrigger.EnterActions>
+						<DataTrigger.ExitActions>
+							<animationsPack:BoxViewColorAnimation To="Black" />
+							<animationsPack:BoxViewCornerRadiusAnimation To="0" />
+						</DataTrigger.ExitActions>
+					</DataTrigger>
+				</BoxView.Triggers>
+			</BoxView>
+			<TableView Grid.Row="1" BackgroundColor="{StaticResource PropertyBackgroundColor}">
+				<TableView.Root>
+					<TableSection Title="Property">
+						<TextCell Text="Color" Detail="Black &gt; Teal &gt; Black" />
+						<TextCell Text="CornerRadius" Detail="0 &gt; 40 &gt; 0" />
+					</TableSection>
+				</TableView.Root>
+			</TableView>
+			<Button Grid.Row="2" Command="{Binding RunAnimation}" Text="RunAnimation" BackgroundColor="{StaticResource ButtonBackgroundColor}" CornerRadius="7" Margin="30,0" />
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

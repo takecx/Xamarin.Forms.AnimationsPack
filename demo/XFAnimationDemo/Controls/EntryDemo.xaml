@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:animationsPack="clr-namespace:Xamarin.Forms.AnimationsPack;assembly=Xamarin.Forms.AnimationsPack" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="XFAnimationDemo.EntryDemo">
+	<ContentPage.Content>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="55*" />
+				<RowDefinition Height="40*" />
+				<RowDefinition Height="5*" />
+			</Grid.RowDefinitions>
+			<Entry Grid.Row="0" TextColor="Black" FontSize="30" Placeholder="Entry PlaceHolder" PlaceholderColor="Green" VerticalOptions="Center" HorizontalOptions="Center" Margin="30">
+				<Entry.Triggers>
+					<DataTrigger TargetType="Entry" Binding="{Binding Path=IsAnimationWorking,Mode=OneWay,UpdateSourceEventName=PropertyChanged}" Value="true">
+						<DataTrigger.EnterActions>
+							<animationsPack:EntryTextColorAnimation To="Yellow" />
+							<animationsPack:EntryFontSizeDoubleAnimation To="60" />
+							<animationsPack:EntryPlaceholderColorAnimation To="Red" />
+						</DataTrigger.EnterActions>
+						<DataTrigger.ExitActions>
+							<animationsPack:EntryTextColorAnimation To="Black" />
+							<animationsPack:EntryFontSizeDoubleAnimation To="30" />
+							<animationsPack:EntryPlaceholderColorAnimation To="Green" />
+						</DataTrigger.ExitActions>
+					</DataTrigger>
+				</Entry.Triggers>
+			</Entry>
+			<TableView Grid.Row="1" BackgroundColor="{StaticResource PropertyBackgroundColor}">
+				<TableView.Root>
+					<TableSection Title="Property">
+						<TextCell Text="FontSize" Detail="30 &gt; 60 &gt; 30" />
+						<TextCell Text="TextColor" Detail="Black &gt; Yellow &gt; Black" />
+						<TextCell Text="PlaceholderColor" Detail=" Green &gt; Red &gt; Green" />
+					</TableSection>
+				</TableView.Root>
+			</TableView>
+			<Button Grid.Row="2" Command="{Binding RunAnimation}" Text="RunAnimation" BackgroundColor="{StaticResource ButtonBackgroundColor}" CornerRadius="7" Margin="30,0" />
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>
